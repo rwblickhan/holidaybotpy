@@ -5,7 +5,8 @@ install:
   - pip install pipenv
   - pipenv lock -r > requirements.txt
   - touch requirements.txt
-  - pip install -r requirements.txt
+  - pip install -r requirements.txt -t .
+  - zip -r deploy.zip *
 script: true
 deploy:
   provider: lambda
@@ -14,6 +15,7 @@ deploy:
   role: "arn:aws:iam::952416174265:role/service-role/holidaybot_execution_role"
   runtime: "python3.6"
   handler_name: "handler"
+  zip: deploy.zip
   on:
     repo: rwblickhan/holidaybotpy
     branch: master
