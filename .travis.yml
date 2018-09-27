@@ -1,0 +1,18 @@
+language: python
+python:
+  - "3.6"
+install:
+  - pip install pipenv
+  - pipenv install
+deploy:
+  provider: lambda
+  function_name: "holidaybot"
+  region: "us-west-2"
+  role: "arn:aws:iam::952416174265:role/service-role/holidaybot_execution_role"
+  runtime: "python3.6"
+  handler_name: "handler"
+  module_name: "holidaybotpy"
+  zip: ${TRAVIS_BUILD_DIR}/build/distributions/holidaybot.zip
+  on:
+    repo: rwblickhan/holidaybot
+    branch: master
