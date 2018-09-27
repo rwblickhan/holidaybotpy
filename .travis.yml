@@ -4,6 +4,7 @@ python:
 install:
   - pip install pipenv
   - pipenv install
+script:
 deploy:
   provider: lambda
   function_name: "holidaybot"
