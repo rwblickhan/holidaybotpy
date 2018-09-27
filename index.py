@@ -17,7 +17,7 @@ def handler(event, context):
     holidays = []
     for entry in soup.find_all('article', 'whatis'):
         link_elem = entry.a
-        holidays.append((link_elem.h4.text, link_elem.get['href']))
+        holidays.append((link_elem.h4.text, link_elem.get('href')))
     slack_token = os.environ['SLACK_TOKEN']
     slack_client = SlackClient(slack_token)
     msg = ""
