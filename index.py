@@ -27,5 +27,5 @@ def handler(event, context):
         msg += holiday[1]
         msg += " | "
     slack_client.api_call('chat.postMessage',
-                          channel='C0000000',
+                          channel='C5F7HQW0K',
                           text=msg)
